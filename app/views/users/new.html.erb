@@ -1,0 +1,15 @@
+<h1>Hello</h1>
+<%= form_with model: @user, local: true do |f| %>
+    <%= f.label :email %>
+    <br>
+    <%= f.email_field :email %>
+    <br>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <%= f.submit "new user" %>
+
+<% end %>
