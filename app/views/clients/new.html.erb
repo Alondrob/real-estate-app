@@ -1,0 +1,30 @@
+<h1>Add new client</h1>
+<%= form_with model: @client, local: true do |f| %>
+    <%= f.label :email %>
+    <br>
+    <%= f.email_field :email %>
+    <br>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+    <%= f.label :phone_number %>
+    <%= f.phone_field :phone_number %>
+    <%= f.label :property_size %>
+    <%= f.select :property_size, ["Studio", "1-bdr", "2-bdr", "3-bdr"] %>
+    <%= f.label :min_price %>
+    <%= f.number_field :min_price %>
+    <%= f.label :max_price %>
+    <%= f.number_field :max_price %>
+    <%= f.label :neighborhood %>
+    <%= f.text_field :neighborhood %>
+    <%= f.label :annual_income %>
+    <%= f.number_field :annual_income %>
+    <%= f.label :credit_score %>
+    <%= f.number_field :credit_score %>
+    <%= f.label :yes %>
+    <%= f.radio_button :guarantor, true %>
+    <%= f.label :no %>
+    <%= f.radio_button :guarantor, false %>
+    <%= f.submit "new client" %>
+<% end %>

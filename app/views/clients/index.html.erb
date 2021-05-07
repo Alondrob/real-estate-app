@@ -1,0 +1,11 @@
+<h1> Your Clients </h1>
+ <table>
+    <tr>
+        <th> First Name </th>
+    </tr>
+    <% @clients.each do |client| %>
+        <tr>
+             <td>  <%= client.first_name %> </td>
+        </tr>
+    <% end %>
+</table>

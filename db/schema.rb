@@ -10,7 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_30_222233) do
+ActiveRecord::Schema.define(version: 2021_05_07_233944) do
+
+  create_table "clients", force: :cascade do |t|
+    t.string "email"
+    t.string "phone_number"
+    t.string "first_name", null: false
+    t.string "last_name"
+    t.float "annual_income"
+    t.integer "credit_score"
+    t.string "property_size"
+    t.integer "min_price"
+    t.integer "max_price"
+    t.string "neighborhood"
+    t.boolean "guarantor"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_clients_on_user_id"
+  end
+
+  create_table "properties", force: :cascade do |t|
+    t.string "management", null: false
+    t.string "address", null: false
+    t.integer "size", null: false
+    t.string "neighborhood", null: false
+    t.string "status", null: false
+    t.integer "price"
+    t.integer "floor", null: false
+    t.string "notes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
