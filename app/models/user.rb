@@ -3,4 +3,6 @@ class User < ApplicationRecord
     validates :email, :first_name, :last_name,  presence: true
     validates_uniqueness_of :email
     has_many :clients
+    has_many :properties
+    # belongs_to :admin
 end
