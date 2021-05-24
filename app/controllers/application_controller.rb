@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
         @current_user ||= User.find_by(id: session[:user_id]) || Admin.find_by(id: session[:admin_id])
     end
 
+    def redirect_if_not_logged_in
+        redirect_to new_session_path unless logged_in?
+    end
+
     def logged_in?
         current_user.present?
     end
@@ -17,6 +21,12 @@ class ApplicationController < ActionController::Base
             false
         end
     end
+
+    def redirect_if_not_admin
+        redirect_to new_session_path unless is_admin?   
+    end
+
+    
 
     def is_user?
         if logged_in?

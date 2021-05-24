@@ -1,0 +1,6 @@
+<h1> Hi <%= current_user.name %> Here are your listings !! </h1>
+    <% @properties.each do |property|  %>
+    <%= property.management %>
+    <%= property.address %>
+
+    <% end %>

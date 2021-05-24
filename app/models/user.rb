@@ -4,5 +4,10 @@ class User < ApplicationRecord
     validates_uniqueness_of :email
     has_many :clients
     has_many :properties
+    
+
+    def name
+        "#{first_name} #{last_name}"
+    end
     # belongs_to :admin
 end

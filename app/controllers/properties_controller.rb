@@ -6,6 +6,7 @@ class PropertiesController < ApplicationController
 
     def create
         property = Property.new(property_params)
+        property.user = current_user
         if property.save
             redirect_to properties_path
         else
@@ -14,14 +15,14 @@ class PropertiesController < ApplicationController
     end
 
     def index
-        @properties = Property.all
+        @properties = current_user.properties
     end
 
       # strong params
-    def client_params
-        params.require(:client).permit(:email, :first_name, :last_name, :phone_number,
-                                       :annual_income, :credit_score, :property_size,
-                                       :min_price, :max_price, :neighborhood, :guarantor)
+    def property_params
+        params.require(:property).permit(:management, :address, :unit_number, :size,
+                                       :neighborhood, :status, :price,
+                                       :floor, :notes)
     end
 
 

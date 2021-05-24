@@ -1,0 +1,10 @@
+<h1> All Agents</h1>
+<% @users.each do |agent| %>
+    <p>
+        <%= agent.name %>
+        <%= link_to "Edit Agent", edit_user_path(agent)  %>
+        <%= link_to "Delete Agent", user_path(agent), method: :delete, data: { confirm: "Are you sure you want to remove the agent from the database?" }  %>
+        
+    </p>
+<% end %>
+

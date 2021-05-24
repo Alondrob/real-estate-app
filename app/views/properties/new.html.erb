@@ -7,12 +7,30 @@
     <br>
     <%= f.label :address %>
     <%= f.text_field :address %>
+
+    <%= f.label :unit_number %>
+    <%= f.text_field :unit_number %>
+
+
+
     <%= f.label :size %>
     <%= f.text_field :size %>
+
     <%= f.label :neighborhood %>
-    <%= f.password_field :neighborhood %>
-    <%= f.label :neighborhood %>
-    <%= f.password_field :neighborhood %>
+    <%= f.text_field :neighborhood %>
+    
+    <%= f.label :status %>
+    <%= f.text_field  :status %>
+
+    <%= f.label :price %>
+    <%= f.number_field  :price,  step: 50 %>
+
+     <%= f.label :floor %>
+    <%= f.number_field  :floor %>
+
+     <%= f.label :notes %>
+    <%= f.text_area  :notes %>
+
 
     <%= f.submit "New property" %>
 
