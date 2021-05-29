@@ -1,0 +1,24 @@
+<h1>Please Edit Client Data</h1>
+<%= form_with model: @client, local: true do |f| %>
+    <%= f.label :email %><br>
+    <%= f.email_field :email %><br>
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %><br>
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %><br>
+    <%= f.label :annual_income %><br>
+    <%= f.number_field :annual_income %><br>
+    <%= f.label :credit_score %><br>
+    <%= f.number_field :credit_score %><br>
+    <%= f.label :Budget %><br>
+    <%= f.number_field :max_price %><br>
+    <%= f.label :neighborhood %><br>
+    <%= f.text_field :neighborhood %><br>
+     <%= f.label :yes %>
+    <%= f.radio_button :guarantor, true %>
+    <%= f.label :no %>
+    <%= f.radio_button :guarantor, false %><br>
+
+    <%= f.submit "Save Client" %>
+
+<% end %>

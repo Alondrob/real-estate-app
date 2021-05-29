@@ -1,11 +1,17 @@
-<h1> Your Clients </h1>
- <table>
-    <tr>
-        <th> First Name </th>
-    </tr>
-    <% @clients.each do |client| %>
-        <tr>
-             <td>  <%= client.first_name %> </td>
-        </tr>
+<% if is_admin? %>
+<h1> Here Are <%= @user.name %>'s Clients</h1>
+<% else %>
+<h1> Hi <%= current_user.name  %> Here Are Your Clients </h1>
+<% end %>
+
+ 
+
+    <% @clients.each do |client| %><br>
+
+  
+        <%= link_to client.client_name, client_path(client) %>
+        
+
+        
+
     <% end %>
-</table>

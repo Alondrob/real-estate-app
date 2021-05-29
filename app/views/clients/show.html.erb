@@ -1,0 +1,15 @@
+<h1> Client: <%= @client.client_name %></h1>
+        <h3> Email:  <%= @client.email %></h3>
+        <h3> Phone number: <%= @client.phone_number %></h3>
+        <h3>Annual Income: <%= @client.annual_income %></h3>
+        <h3>Credit Score: <%= @client.credit_score %></h3>
+        <h3>Intersted In A Property Of: <%= @client.property_size %></h3>
+        <h3>Neighborhood Intersted In: <%= @client.neighborhood %></h3>
+        <h3>Budget Up To : <%= @client.max_price %></h3>
+        <h3>Using A Guarantor: <%= @client.guarantor %></h3>
+        <% if is_user? %>
+                <%= link_to 'Edit Client', edit_client_path %><br>
+                  <%= link_to "Delete Client", client_path(@client), method: :delete, data: { confirm: "Are you sure you want to delete ?" }  %>
+        <% end %>
+
+

@@ -15,8 +15,40 @@ class ClientsController < ApplicationController
     end
 
     def index
-        @clients = current_user.clients
+        if is_admin?
+            @user = current_user.users.find(params[:user_id])
+            @clients = @user.clients
+        else
+         @clients = current_user.clients
+        end
     end
+
+    def show  
+        @client = current_user.clients.find(params[:id])
+    end
+
+    def edit
+        @client = Client.find(params[:id])
+    end
+
+    def update
+        client = Client.find(params[:id])
+        if client.update(client_params)
+            redirect_to client_path(client)
+        else
+            redirect_to edit_client_path(client)
+        end 
+    end
+
+
+    def destroy 
+        # byebug
+        client = Client.find(params[:id])
+        client.destroy
+        redirect_to clients_path
+    end
+
+    
 
       # strong params
     def client_params

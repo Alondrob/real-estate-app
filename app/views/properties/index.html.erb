@@ -1,6 +1,8 @@
-<h1> Hi <%= current_user.name %> Here are your listings !! </h1>
-    <% @properties.each do |property|  %>
-    <%= property.management %>
-    <%= property.address %>
-
+<% if is_user? %>
+<h1> Hi <%= current_user.name %> Here are your listings !! </h1><br>
+<% else %>
+<h3> Hello </h3>
+<% end %>
+    <% @properties.each do |property|  %><br>
+    <%= link_to property.address, property_path(property) %><br>
     <% end %>

@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
     def create
         user = User.new(user_params)
+        user.admin = current_user
         if user.save
             redirect_to users_path
         else
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
     end
 
     def index   
-        @users = User.all 
+        @users = current_user.users
     end
 
     def show

@@ -6,7 +6,7 @@ class PropertiesController < ApplicationController
 
     def create
         property = Property.new(property_params)
-        property.user = current_user
+       
         if property.save
             redirect_to properties_path
         else
@@ -18,11 +18,42 @@ class PropertiesController < ApplicationController
         @properties = current_user.properties
     end
 
+    def show
+        @property = Property.find(params[:id])
+    end
+
+    def edit
+        @property = current_user.properties.find(params[:id])
+    end
+
+  
+    def update
+        property = Property.find(params[:id])
+        if property.update(property_params)
+            redirect_to property_path(property)
+        else
+            redirect_to edit_property_path(property)
+        end 
+    end
+
+    def all_properties
+        @properties = Property.all
+    end
+
+    def destroy
+        property = Property.find(params[:id])
+        property.destroy
+        redirect_to properties_path
+    end
+
+    
+    
+
       # strong params
     def property_params
         params.require(:property).permit(:management, :address, :unit_number, :size,
                                        :neighborhood, :status, :price,
-                                       :floor, :notes)
+                                       :floor, :notes, :user_id)
     end
 
 

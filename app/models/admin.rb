@@ -3,5 +3,5 @@ class Admin < ApplicationRecord
     validates  :email,  presence: true    
     has_many :users
     has_many :properties, through: :users
-    has_many :clients, through: :properties
+    has_many :clients, through: :users
 end

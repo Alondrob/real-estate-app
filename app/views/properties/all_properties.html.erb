@@ -1,0 +1,8 @@
+<% if is_admin? %>
+<h2> Hello</h2>
+<% else %>
+<h1>Hi <%= current_user.name %> These Are All The Listings</h1>
+<% end %>
+<% @properties.each do |p|   %><br>
+    <%= link_to p.address, property_path(p) %>
+<% end  %>
