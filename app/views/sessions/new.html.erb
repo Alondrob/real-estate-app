@@ -1,4 +1,7 @@
+<%= link_to "Sign In With Google", "/auth/google_oauth2", method: :post %>
+
 <%= form_tag sessions_path, method: :post do %>
+
     <%= label_tag :email %>
     <%= text_field_tag :email %>
     <%= label_tag :password %>

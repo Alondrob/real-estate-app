@@ -1,5 +1,16 @@
 <h1>Add new client</h1>
 <%= form_with model: @client, local: true do |f| %>
+
+    <% if @client.errors.any? %>
+        <ul>
+            <% @client.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+            <% end %>
+        </ul>
+    <% end %>
+
+
+    <%= f.hidden_field :user_id, value: @client.user_id %>
     <%= f.label :email %><br>
     
     <%= f.email_field :email %><br>
@@ -20,7 +31,8 @@
     <%= f.label :annual_income %><br>
     <%= f.number_field :annual_income %><br>
     <%= f.label :credit_score %><br>
-    <%= f.number_field :credit_score %><br>
+    <%= f.number_field :credit_score %><br><br>
+    <%= f.label :guarantor, "Using A Guarantor" %><br>
     <%= f.label :yes %><br>
     <%= f.radio_button :guarantor, true %><br>
     <%= f.label :no %><br>

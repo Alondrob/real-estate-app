@@ -1,16 +1,17 @@
 class PropertiesController < ApplicationController
     
     def new
-        @property = Property.new
+        user = User.find(params[:user_id])
+        @property = Property.new(user_id: user.id)
     end
 
     def create
-        property = Property.new(property_params)
+        @property = Property.new(property_params)
        
-        if property.save
+        if @property.save
             redirect_to properties_path
         else
-            redirect_to new_property_path
+            render :new
         end
     end
 

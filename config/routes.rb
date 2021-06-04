@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get "auth/:provider/callback", to: "sessions#google_auth"
   resources :users do
-    resources :clients, only: [:index] 
+    resources :clients, only: [:index, :new] 
+    resources :properties, only: [:new]
   end
   resources :sessions
-  resources :clients, except: [:index]
-  resources :properties
+  resources :clients, except: [:index, :new]
+  resources :properties, except: [:new]
   resources :admins, only: [:edit, :update, :destroy]
   get '/admin/login', to: 'admins#login'
   post '/admin/logged_in', to: 'admins#logged_in'

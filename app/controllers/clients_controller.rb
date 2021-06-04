@@ -1,16 +1,17 @@
 class ClientsController < ApplicationController
     
     def new
-        @client = Client.new
+        user = User.find(params[:user_id])
+        @client = Client.new(user_id: user.id)
     end
 
     def create
-        client = Client.new(client_params)
-        client.user = current_user 
-        if client.save
+        @client = Client.new(client_params)
+        
+        if @client.save
             redirect_to clients_path
         else
-            redirect_to new_client_path
+            render :new 
         end
     end
 

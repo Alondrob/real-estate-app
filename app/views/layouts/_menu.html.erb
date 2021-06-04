@@ -4,12 +4,12 @@
     <%= link_to 'Logged Out', admin_logged_out_path, method: :delete %>
     <%= link_to 'Homepage', users_path %>
     <%= link_to 'All Properties', all_properties_path %>
-     <%= link_to 'Create Property', new_property_path %>
+     <%= link_to 'Create Property', new_user_property_path(current_user) %>
 <% elsif is_user? %>
-    <%= link_to 'Add new property ||', new_property_path %>
+    <%= link_to 'Add new property ||', new_user_property_path(current_user) %>
     <%= link_to 'My Properties ||', properties_path %>
     <%= link_to 'My Clients ||', user_clients_path(current_user) %>
-    <%= link_to 'Add New Client ||', new_client_path %>
+    <%= link_to 'Add New Client ||', new_user_client_path(current_user) %>
     <%= link_to 'All Properties ||', all_properties_path %>
    
     <%= link_to 'Logged Out ||', session_path(current_user), method: :delete %>

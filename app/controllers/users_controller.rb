@@ -5,20 +5,21 @@ class UsersController < ApplicationController
 
     def new
         @user = User.new
+        @user.clients.build
     end
 
     def create
-        user = User.new(user_params)
-        user.admin = current_user
-        if user.save
+        @user = User.new(user_params)
+        @user.admin = current_user
+        if @user.save
             redirect_to users_path
         else
-            redirect_to new_user_path
+            render :new
         end        
     end
 
     def index   
-        @users = current_user.users
+        @users = current_user.users.by_first_name
     end
 
     def show
@@ -48,6 +49,8 @@ class UsersController < ApplicationController
 
     # strong params
     def user_params
-        params.require(:user).permit(:email, :first_name, :last_name, :password)
+        params.require(:user).permit(:email, :first_name, :last_name, :password, clients_attributes: [:email, :first_name, :last_name, :phone_number,
+                                       :annual_income, :credit_score, :property_size,
+                                       :min_price, :max_price, :neighborhood, :guarantor])
     end
 end

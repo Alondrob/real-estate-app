@@ -20,5 +20,10 @@ class SessionsController < ApplicationController
         redirect_to new_session_path
     end
 
+    def google_auth
+        auth = request.env["omniauth.auth"]
+        binding.pry
+    end
+
 
 end
