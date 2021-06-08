@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   get '/all_properties', to: 'properties#all_properties'
 
+  get '/about_us', to: 'application#about_us'
+
 
   # patch 'clients/:id', to: 'clients#update'
 

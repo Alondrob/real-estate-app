@@ -36,4 +36,8 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def about_us
+        render :'layouts/about_us'
+    end
+
 end

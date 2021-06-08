@@ -4,12 +4,13 @@ class User < ApplicationRecord
     validates_uniqueness_of :email
     has_many :clients
     has_many :properties
-    belongs_to :admin
-    accepts_nested_attributes_for :clients, reject_if: proc {|attributes| attributes["email"].blank?}
+    belongs_to :admin, required: false 
+    # accepts_nested_attributes_for :clients, reject_if: proc {|attributes| attributes["email"].blank?}
+    accepts_nested_attributes_for :properties
     
     scope :by_first_name, -> { order(first_name: :asc) }
 
-    scope :by_ariel_and_daniel, -> { where(first_name: ["Daniel", "Ariel "]) }
+    
 
     def name
         "#{first_name} #{last_name}"
@@ -17,6 +18,16 @@ class User < ApplicationRecord
 
     def my_clients
         @user.clients
+    end
+
+    def self.from_omniauth(auth)
+        User.where(email: auth["info"]["email"]).first_or_initialize do |user|
+            user.email = auth["info"]["email"]
+            user.first_name = auth["info"]["first_name"] 
+            user.last_name = auth["info"]["last_name"]
+            user.password = SecureRandom.hex
+        end
+       
     end
     # belongs_to :admin
 end

@@ -1,21 +1,2 @@
 <h1>Please Edit Listing</h1>
-<%= form_with model: @property, local: true do |f| %>
-    <%= f.label :management %><br>
-    <%= f.text_field :management %><br>
-    <%= f.label :address %><br>
-    <%= f.text_field :address %><br>
-    <%= f.label :size %><br>
-    <%= f.text_field :size %><br>
-    <%= f.label :neighborhood %><br>
-    <%= f.text_field :neighborhood %><br>
-    <%= f.label :price %><br>
-    <%= f.number_field :price %><br>
-    <%= f.label :status %><br>
-    <%= f.text_field :status %><br>
-    <%= f.label :floor %><br>
-    <%= f.number_field :floor %><br>
-    <%= f.label :notes %><br>
-     <%= f.text_area :notes %><br>
-    <%= f.submit "Save Listing" %>
-
-<% end %>
+ <%= render 'form' %>

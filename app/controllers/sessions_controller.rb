@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
     def create
         user = User.find_by(email: params[:email])
         if user && user.authenticate(params[:password])
-            session.clear
             session[:user_id] = user.id
             redirect_to user_path(user)
         else
@@ -22,7 +21,11 @@ class SessionsController < ApplicationController
 
     def google_auth
         auth = request.env["omniauth.auth"]
-        binding.pry
+        user = User.from_omniauth(auth)
+        user.save
+        session.clear
+        session[:user_id] = user.id
+        redirect_to user_path(user)
     end
 
 

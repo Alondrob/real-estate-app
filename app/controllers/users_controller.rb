@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
     def new
         @user = User.new
-        @user.clients.build
+        @user.properties.build
     end
 
     def create
@@ -49,8 +49,7 @@ class UsersController < ApplicationController
 
     # strong params
     def user_params
-        params.require(:user).permit(:email, :first_name, :last_name, :password, clients_attributes: [:email, :first_name, :last_name, :phone_number,
-                                       :annual_income, :credit_score, :property_size,
-                                       :min_price, :max_price, :neighborhood, :guarantor])
+        params.require(:user).permit(:email, :first_name, :last_name, :password, properties_attributes: [:management, :address, :size, :neighborhood, :status, :floor, :notes]
+        )
     end
 end

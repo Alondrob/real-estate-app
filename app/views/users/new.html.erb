@@ -1,4 +1,5 @@
 <h1>Hello</h1>
+
 <%= form_with model: @user, local: true do |f| %>
 
     <% if @user.errors.any? %>
@@ -20,34 +21,41 @@
     <%= f.text_field :last_name %><br>
     <%= f.label :password %><br>
     <%= f.password_field :password %><br>
-    <h3> Add Client</h3>
-    <%= f.fields_for :clients do |client| %>
-        <%= client.label :email %><br>
-        <%= client.email_field :email %><br>
-        <%= client.label :first_name %><br>
-        <%= client.text_field :first_name %><br>
-        <%= client.label :last_name %><br>
-        <%= client.text_field :last_name %><br>
-        <%= client.label :phone_number %><br>
-        <%= client.telephone_field :phone_number %><br>
-        <%= client.label :property_size %><br>
-        <%= client.select :property_size, ["Studio", "1-bdr", "2-bdr", "3-bdr"] %><br>
-        <%= client.label :min_price %><br>
-        <%= client.number_field :min_price %><br>
-        <%= client.label :max_price %><br>
-        <%= client.number_field :max_price %><br>
-        <%= client.label :neighborhood %><br>
-        <%= client.text_field :neighborhood %><br>
-        <%= client.label :annual_income %><br>
-        <%= client.number_field :annual_income %><br>
-        <%= client.label :credit_score %><br>
-        <%= client.number_field :credit_score %><br>
-        <%= client.label :yes %><br>
-        <%= client.radio_button :guarantor, true %><br>
-        <%= client.label :no %><br>
-        <%= client.radio_button :guarantor, false %><br>
+    
+    <h3> Add Property</h3>
+    <%= f.fields_for :properties do |property| %>
+        <%= property.label :management %> <br>
+    
+    <%= property.text_field :management %> <br>
+   
+    <%= property.label :address %> <br>
+    <%= property.text_field :address %> <br>
+
+    <%= property.label :unit_number %> <br>
+    <%= property.text_field :unit_number %> <br>
+
+
+
+    <%= property.label :size %> <br>
+    <%= property.select :size, ["Studio", "1-bdr", "2-bdr", "3-bdr"] %><br> <br>
+
+    <%= property.label :neighborhood %> <br>
+    <%= property.text_field :neighborhood %> <br>
+    
+    <%= property.label :status %> <br>
+     <%= property.select :status, ["Vaccant", "Application-Pending", "Rented"] %><br> 
+
+    <%= property.label :price %> <br>
+    <%= property.number_field  :price,  step: 50 %> <br>
+
+     <%= property.label :floor %> <br>
+    <%= property.number_field  :floor %> <br>
+
+     <%= property.label :notes %> <br>
+    <%= property.text_area  :notes %> <br>
+
     <% end %>
 
-    <%= f.submit "new user" %>
+    <%= f.submit "new Agent" %>
 
 <% end %>
