@@ -2,7 +2,7 @@ class User < ApplicationRecord
     has_secure_password
     validates :email, :first_name, :last_name,  presence: true
     validates_uniqueness_of :email
-    has_many :clients
+    has_many :clients, dependent: :destroy
     has_many :properties
     belongs_to :admin, required: false 
     # accepts_nested_attributes_for :clients, reject_if: proc {|attributes| attributes["email"].blank?}
