@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   
   resources :sessions
-  resources :clients, except: [:index, :new]
+  resources :clients, except: [:index, :new ]
   resources :properties, except: [:new]
   resources :admins, only: [:edit, :update, :destroy]
   get '/admin/login', to: 'admins#login'

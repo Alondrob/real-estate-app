@@ -10,7 +10,7 @@ class ClientsController < ApplicationController
         @client.user_id = current_user.id
         
         if @client.save
-            redirect_to clients_path
+            redirect_to user_clients_path(current_user)
         else
             render :new 
         end
@@ -47,7 +47,7 @@ class ClientsController < ApplicationController
         # byebug
         client = Client.find(params[:id])
         client.destroy
-        redirect_to clients_path
+        redirect_to user_clients_path(current_user)
     end
 
     
