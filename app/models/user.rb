@@ -5,7 +5,7 @@ class User < ApplicationRecord
     has_many :clients, dependent: :destroy
     has_many :properties
     belongs_to :admin, required: false 
-    # accepts_nested_attributes_for :clients, reject_if: proc {|attributes| attributes["email"].blank?}
+    
     accepts_nested_attributes_for :properties
     
     scope :by_first_name, -> { order(first_name: :asc) }

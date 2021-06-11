@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get '/admin/login', to: 'admins#login'
   post '/admin/logged_in', to: 'admins#logged_in'
 
+  get '/cheapest_property', to: 'properties#cheapest'
+
   get '/hello', to: 'users#hello'
   get '/dashboard', to: 'admins#dashboard'
   delete '/admin/logged_out', to: 'admins#logged_out'

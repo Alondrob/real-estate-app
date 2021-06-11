@@ -11,6 +11,7 @@
     <%= link_to 'My Clients ||', user_clients_path(current_user) %>
     <%= link_to 'Add New Client ||', new_user_client_path(current_user) %>
     <%= link_to 'All Properties ||', all_properties_path %>
+    <%= link_to 'Cheapest Property||', cheapest_property_path %>
    
     <%= link_to 'Logged Out ||', session_path(current_user), method: :delete %>
 
