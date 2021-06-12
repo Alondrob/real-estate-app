@@ -1,0 +1,21 @@
+<%= form_with model: @tour, local: true do |f| %>
+  
+  <% if @tour.errors.any? %>
+        <ul>
+            <% @tour.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+            <% end %>
+        </ul>
+    <% end %>
+
+    <%= f.label :property_id %><br>
+    <%= f.select :property_id, Property.all.map {|property| ["#{property.address}, Price: #{number_to_currency(property.price)}", property.id]} %><br>
+
+    <%= f.label :client_id %><br>
+    <%= f.select :client_id, current_user.clients.map {|client| [client.info, client.id]} %><br>
+
+    <%= f.label :time %><br>
+    <%= f.datetime_field :time %><br>
+    <%= f.submit "Book A Tour" %>
+
+<% end %>

@@ -4,6 +4,8 @@ class User < ApplicationRecord
     validates_uniqueness_of :email
     has_many :clients, dependent: :destroy
     has_many :properties
+
+    has_many :tours, through: :clients
     belongs_to :admin, required: false 
     
     accepts_nested_attributes_for :properties

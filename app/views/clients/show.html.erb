@@ -10,6 +10,12 @@
         <% if is_user? %>
                 <%= link_to 'Edit Client', edit_client_path %><br>
                   <%= link_to "Delete Client", client_path(@client), method: :delete, data: { confirm: "Are you sure you want to delete ?" }  %>
-        <% end %>
+        <% end %><br>
 
+        <h1> Upcoming Tours</h1><br>
+
+                <% @client.tours.each do |tour| %>
+                <%= tour.property.address %>
+                <%= tour.time %>
+        <% end %>
 

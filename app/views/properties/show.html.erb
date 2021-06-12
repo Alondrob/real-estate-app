@@ -12,4 +12,11 @@
                 <%= link_to "Delete Property", property_path(@property), method: :delete, data: { confirm: "Are you sure you want to delete ?" }  %>
         <% end %>
 
+        <h1> Upcoming Tours</h1><br>
+        
+                <% @property.tours.each do |tour| %>
+                <%= tour.client.info %>
+                <%= tour.time %>
+        <% end %>
+
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_28_232024) do
+ActiveRecord::Schema.define(version: 2021_06_12_132134) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(version: 2021_05_28_232024) do
     t.integer "user_id"
     t.string "unit_number"
     t.index ["user_id"], name: "index_properties_on_user_id"
+  end
+
+  create_table "tours", force: :cascade do |t|
+    t.integer "property_id"
+    t.integer "client_id"
+    t.datetime "time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_tours_on_client_id"
+    t.index ["property_id"], name: "index_tours_on_property_id"
   end
 
   create_table "users", force: :cascade do |t|

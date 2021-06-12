@@ -46,12 +46,11 @@ class PropertiesController < ApplicationController
         property.destroy
         redirect_to properties_path
     end
-
-    def cheapest
-        @property = Property.where.not(price:"0")
-        @prop = @property.all.by_price.limit(1)
-    end
     
+    def cheapest
+        @property = Property.where.not(price: 0).by_price.limit(2).first
+        
+    end
     
 
       # strong params

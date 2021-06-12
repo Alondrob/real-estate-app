@@ -1,0 +1,7 @@
+<h1> Hi <%=current_user.name %> Here are your upcoming tours </h1><br>
+
+<% @tours.each do |tour|  %>
+    <%= tour.property.address %>
+    <%= tour.client.info %>
+    <%= tour.time %><br>
+<% end %>

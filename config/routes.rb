@@ -6,7 +6,7 @@ Rails.application.routes.draw do
      resources :properties, only: [:new]
   end
 
-  
+  resources :tours
   resources :sessions
   resources :clients, except: [:index, :new ]
   resources :properties, except: [:new]
